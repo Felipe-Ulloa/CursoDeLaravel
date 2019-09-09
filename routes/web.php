@@ -11,28 +11,25 @@
 |
 */
 
-$portfolio=[
 
-['title' => 'proyecto #1'],
-['title' => 'proyecto #2'],
-['title' => 'proyecto #3'],
-['title' => 'proyecto #4'],
-];
 
 Route::view('/','home')->name('home');
 Route::view('/about','about')->name('about');
-Route::view('/portfolio','portfolio', compact('portfolio'))->name('portfolio');
+
 Route::view('/contact','contact')->name('contact');
 
-Route::post('contact', 'MessagesController@store');
+Route::post('contact', 'MessageController@store');
+
+Route::get('project','ProjectController@index')->name('projects.index');
+Route::get('project/{id}','ProjectController@show')->name('projects.show');
 
 /*
 
-Route::resource('projects','PortfolioController');
+
 
 Route::view('/','home')->name('home');
 Route::view('/about','about')->name('about');
 Route::view('/portfolio','portfolio', compact('portfolio'))->name('portfolio');
 Route::view('/contact','contact')->name('contact');
-Route::get('/portfolio','PortfolioController@index')->name('portfolio');
+Route::get('/portfolio','ProjectController@index')->name('portfolio');
 */

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Project;
 use Illuminate\Http\Request;
 
-class PortfolioController extends Controller
+
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,11 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        //
+       
+
+        return view('projects.index',[
+            'projects' => Project::latest()->paginate(2)
+        ]);
     }
 
     /**
@@ -45,7 +51,14 @@ class PortfolioController extends Controller
      */
     public function show($id)
     {
-        //
+
+        
+        return view('projects.show',[
+
+            'project' => Project::findOrFail($id)
+
+        ]);  
+
     }
 
     /**
